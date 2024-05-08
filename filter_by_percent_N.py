@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+##This script takes an alignment fasta file as input and filters based on "N" values. User specifies the percentage to filter at. Outputs include a filtered outfile and a list of sequences removed. 
+
 
 import argparse
 import os
