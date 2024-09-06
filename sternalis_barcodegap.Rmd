@@ -1,0 +1,35 @@
+---
+title: "species_delimitation"
+output: html_notebook
+---
+
+
+```{r}
+#install.packages("BarcodingR")
+library('BarcodingR')
+library('ape')
+install.packages("adegenet")
+library('adegenet')
+
+dna_ref <- fasta2DNAbin('clarki_barcodes_ref.fasta')
+dna_query <- fasta2DNAbin('clarki_barcodes.fasta')
+
+b.gap <- barcoding.gap(dna_query, dist = "raw")
+
+b.gap
+
+your_list <- list(
+  c("inter", "intra"),
+  structure(c(0.016717325, 0.023556231, 0.031914894, 0.035136778, 0.048632219, 0.056231003, 
+    0.000000000, 0.001519757, 0.001519757, 0.002184650, 0.003039514, 0.006079027)
+),
+            .Names = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", 
+                       "Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max."))
+
+
+# Convert the list to a data frame
+your_data_frame <- as.data.frame(do.call(cbind, your_list))
+
+write.csv(your_data_frame, file ="distance_output.csv")
+```
+
