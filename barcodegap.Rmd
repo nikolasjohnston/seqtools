@@ -5,31 +5,43 @@ output: html_notebook
 
 
 ```{r}
+##install packages if needed
 #install.packages("BarcodingR")
+#install.packages("adegenet")
+#install.packages("ape")
+
 library('BarcodingR')
 library('ape')
-install.packages("adegenet")
 library('adegenet')
 
-dna_ref <- fasta2DNAbin('clarki_barcodes_ref.fasta')
-dna_query <- fasta2DNAbin('clarki_barcodes.fasta')
+dna_ref <- fasta2DNAbin('barcodes_ref.fasta')
+
+#where reference is formatted like this: 
+#name in fasta, species name
+#e.g.
+#>clarki_123_-_COX1_gene, Calliphora_clarki
+#>niveata_124_-_COX1_gene, Calliphora_niveata
+#>nigristima_125_-_COX1_gene, Calliphora_nigristigma
+#>nigristigma_126_-_COX1_gene, Calliphora_nigristigma
+#>niveata_130_-_COX1_gene, Calliphora_niveata
+#>niveata_131_-_COX1_gene, Calliphora_niveata
+#>clarki_132_-_COX1_gene, Calliphora_clarki
+#>trojana_133_-_COX1_gene, Calliphora_trojana
+#>torjana_134_-_COX1_gene, Calliphora_trojana
+#>niveata_138_-_COX1_gene, Calliphora_niveata
+#>niveata_243_-_COX1_gene, Calliphora_niveata
+#>Xanthocera_286_S3_L00_-_COX1_gene, Calliphora_xanthocera
+#>Xanthocera_B3_Consensus_-_COX1_gene, Calliphora_xanthocera
+#>Xanthocera_B4_Consensus_-_COX1_gene, Calliphora_xanthocera
+
+
+dna_query <- fasta2DNAbin('barcodes_file.fasta')
+#normal sequence file
+
 
 b.gap <- barcoding.gap(dna_query, dist = "raw")
 
 b.gap
 
-your_list <- list(
-  c("inter", "intra"),
-  structure(c(0.016717325, 0.023556231, 0.031914894, 0.035136778, 0.048632219, 0.056231003, 
-    0.000000000, 0.001519757, 0.001519757, 0.002184650, 0.003039514, 0.006079027)
-),
-            .Names = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", 
-                       "Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max."))
-
-
-# Convert the list to a data frame
-your_data_frame <- as.data.frame(do.call(cbind, your_list))
-
-write.csv(your_data_frame, file ="distance_output.csv")
 ```
 
