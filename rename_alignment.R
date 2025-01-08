@@ -25,7 +25,7 @@ names(new_alignment) <- sapply(names(alignment_file), function(seq_name) {
 })
 
 # Write the new alignment to a file
-writeXStringSet(new_alignment, filepath = "sternalis_part_alignment_renamed.fasta", format = "fasta")
+writeXStringSet(new_alignment, filepath = "yourdata_renamed.fasta", format = "fasta")
 
 # Optional: If you want to compare the names before and after renaming
 print("Original names:")
