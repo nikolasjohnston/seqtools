@@ -3,13 +3,13 @@ library("Biostrings")
 library("ape")
 
 # Set the working directory
-setwd("~/OneDrive/Work/PostDoc/2024/Research/papers_projects/ABRS_Calliphoridae/Sternalis paper/Data analysis/phylo/u148785_1034134/")
+setwd()
 
 # Read the alignment file (e.g., in FASTA format)
-alignment_file <- readDNAStringSet("sternalis_part_alignment.fasta")
+alignment_file <- readDNAStringSet("your_data")
 
 # Read the label data CSV
-label_data <- read.csv("label_data.csv")
+label_data <- read.csv("your_data")
 
 # Create a named vector for the new labels with original labels as names
 label_dict <- setNames(label_data$new_label, label_data$old_label)
